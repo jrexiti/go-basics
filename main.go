@@ -9,6 +9,7 @@ import (
 )
 
 func main() {
+	packageone.Exported()
 	rand.Seed(time.Now().UnixNano())
 	newstring := packageone.PublicVar
 	fmt.Println("From packageone:", newstring)
