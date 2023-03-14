@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-const prompt = "and press ENTER when ready."
 
 func main() {
 	rand.Seed(time.Now().UnixNano())
