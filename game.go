@@ -10,7 +10,6 @@ const prompt = "and press ENTER when ready."
 
 func theGame(firstNumber, secondNumber, subtraction, answer int) {
 	reader := bufio.NewReader(os.Stdin)
-	
 
 	fmt.Println("Guess the Number Game")
 	fmt.Println("_______________________")
