@@ -5,20 +5,35 @@ import "fmt"
 func main() {
 	fmt.Println("hello world!")
 
-	var a = 1
-	var b = &a
+	a := 1
+	b := &a
 	*b = 4
 	a = 9
 
 	fmt.Println(b, *b, a)
 
-	myChannel := make(chan string)
+	channelOne := make(chan string)
+	channelTwo := make(chan string)
+	channelThree := make(chan string)
 
 	go func() {
-		myChannel <- "data"
+		channelOne <- "first channel"
 	}()
 
-	msg := <-myChannel
+	go func() {
+		channelTwo <- "second channel"
+	}()
+	go func() {
+		channelThree <- "third channel"
+	}()
 
-	fmt.Println(msg)
+	select {
+	case msgFromChannel := <-channelOne:
+		fmt.Println("message from:", msgFromChannel)
+	case msgFromChannelTwo := <-channelTwo:
+		fmt.Println("message from:", msgFromChannelTwo)
+	case msgFromThirdChannel := <-channelThree:
+		fmt.Println("message from:", msgFromThirdChannel)
+	}
+
 }
